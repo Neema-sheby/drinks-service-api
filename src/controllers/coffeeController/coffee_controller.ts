@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as coffeeService from "../services/coffee_service";
+import * as coffeeService from "../../services/coffee_service";
 
 export const getCoffee = async (
   req: Request<object, object, object, { coffeeName: string | undefined }>,
@@ -8,4 +8,9 @@ export const getCoffee = async (
   const { coffeeName } = req.query;
   const coffee = coffeeService.getCoffee(coffeeName);
   res.json(coffee).status(200);
+};
+
+export const getCoffeeLoverMessage = async (req: Request, res: Response) => {
+  const coffeeLoverMessage = coffeeService.getCoffeeLoverMessage();
+  res.send(coffeeLoverMessage).status(200);
 };
